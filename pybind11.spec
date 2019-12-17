@@ -4,10 +4,10 @@
 #
 Name     : pybind11
 Version  : 2.2.4
-Release  : 4
+Release  : 5
 URL      : https://github.com/pybind/pybind11/archive/v2.2.4.tar.gz
 Source0  : https://github.com/pybind/pybind11/archive/v2.2.4.tar.gz
-Summary  : No detailed summary available
+Summary  : A lightweight header-only library that exposes C++ types in Python and vice versa
 Group    : Development/Tools
 License  : BSD-3-Clause
 Requires: pybind11-data = %{version}-%{release}
@@ -20,7 +20,12 @@ BuildRequires : pytest
 BuildRequires : python3
 
 %description
-![pybind11 logo](https://github.com/pybind/pybind11/raw/master/docs/pybind11-logo.png)
+# pybind11 — Seamless operability between C++11 and Python
+[![Documentation Status](https://readthedocs.org/projects/pybind11/badge/?version=master)](http://pybind11.readthedocs.org/en/master/?badge=master)
+[![Documentation Status](https://readthedocs.org/projects/pybind11/badge/?version=stable)](http://pybind11.readthedocs.org/en/stable/?badge=stable)
+[![Gitter chat](https://img.shields.io/gitter/room/gitterHQ/gitter.svg)](https://gitter.im/pybind/Lobby)
+[![Build Status](https://travis-ci.org/pybind/pybind11.svg?branch=master)](https://travis-ci.org/pybind/pybind11)
+[![Build status](https://ci.appveyor.com/api/projects/status/riaj54pn4h08xy40?svg=true)](https://ci.appveyor.com/project/wjakob/pybind11)
 
 %package data
 Summary: data components for the pybind11 package.
@@ -35,6 +40,8 @@ Summary: dev components for the pybind11 package.
 Group: Development
 Requires: pybind11-data = %{version}-%{release}
 Provides: pybind11-devel = %{version}-%{release}
+Requires: pybind11 = %{version}-%{release}
+Requires: pybind11 = %{version}-%{release}
 
 %description dev
 dev components for the pybind11 package.
@@ -50,24 +57,34 @@ license components for the pybind11 package.
 
 %prep
 %setup -q -n pybind11-2.2.4
+cd %{_builddir}/pybind11-2.2.4
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1540935348
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1576605321
 mkdir -p clr-build
 pushd clr-build
+# -Werror is for werrorists
+export GCC_IGNORE_WERROR=1
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1540935348
+export SOURCE_DATE_EPOCH=1576605321
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pybind11
-cp LICENSE %{buildroot}/usr/share/package-licenses/pybind11/LICENSE
+cp %{_builddir}/pybind11-2.2.4/LICENSE %{buildroot}/usr/share/package-licenses/pybind11/a33b61f04391a38904373d020e7fbabf211383f6
 pushd clr-build
 %make_install
 popd
@@ -108,4 +125,4 @@ popd
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/pybind11/LICENSE
+/usr/share/package-licenses/pybind11/a33b61f04391a38904373d020e7fbabf211383f6
