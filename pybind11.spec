@@ -4,7 +4,7 @@
 #
 Name     : pybind11
 Version  : 2.4.3
-Release  : 8
+Release  : 9
 URL      : https://files.pythonhosted.org/packages/aa/91/deb6743e79e22ab01502296570b39b8404f10cc507a6692d612a7fee8d51/pybind11-2.4.3.tar.gz
 Source0  : https://files.pythonhosted.org/packages/aa/91/deb6743e79e22ab01502296570b39b8404f10cc507a6692d612a7fee8d51/pybind11-2.4.3.tar.gz
 Summary  : A lightweight header-only library that exposes C++ types in Python and vice versa
@@ -57,6 +57,7 @@ python components for the pybind11 package.
 Summary: python3 components for the pybind11 package.
 Group: Default
 Requires: python3-core
+Provides: pypi(pybind11)
 
 %description python3
 python3 components for the pybind11 package.
@@ -71,7 +72,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1576607470
+export SOURCE_DATE_EPOCH=1583204744
 # -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
