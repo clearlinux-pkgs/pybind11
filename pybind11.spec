@@ -4,7 +4,7 @@
 #
 Name     : pybind11
 Version  : 2.5.0
-Release  : 10
+Release  : 11
 URL      : https://files.pythonhosted.org/packages/56/cf/efb853937e69168a215a70c049b66b2e8aea3b9a1929f9650752d7ff1f32/pybind11-2.5.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/56/cf/efb853937e69168a215a70c049b66b2e8aea3b9a1929f9650752d7ff1f32/pybind11-2.5.0.tar.gz
 Summary  : A lightweight header-only library that exposes C++ types in Python and vice versa
