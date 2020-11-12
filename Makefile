@@ -1,5 +1,5 @@
 PKG_NAME := pybind11
-URL = https://files.pythonhosted.org/packages/9a/36/3a9de7b56e0b01689d9ca4658701d12941069940f8a1431597a48dbc53fa/pybind11-2.6.0.tar.gz
+URL = https://files.pythonhosted.org/packages/d8/47/2eb4be23fa8cc1a08c855c012c1aa4348d06ab1a5527f876515bbf689644/pybind11-2.6.1.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
