@@ -4,7 +4,7 @@
 #
 Name     : pybind11
 Version  : 2.6.1
-Release  : 19
+Release  : 20
 URL      : https://files.pythonhosted.org/packages/d8/47/2eb4be23fa8cc1a08c855c012c1aa4348d06ab1a5527f876515bbf689644/pybind11-2.6.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/d8/47/2eb4be23fa8cc1a08c855c012c1aa4348d06ab1a5527f876515bbf689644/pybind11-2.6.1.tar.gz
 Summary  : Seamless operability between C++11 and Python
